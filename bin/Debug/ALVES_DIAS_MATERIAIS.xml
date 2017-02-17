@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<ArrayOfMaterialA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <MaterialA>
+    <Id>1</Id>
+    <Codigo>sq22442</Codigo>
+    <Material>ddggd</Material>
+    <Unidade>44tt</Unidade>
+    <Saldo>1</Saldo>
+  </MaterialA>
+  <MaterialA>
+    <Id>2</Id>
+    <Codigo>dj55555</Codigo>
+    <Material>sfvcnyiy tjgf</Material>
+    <Unidade>rty</Unidade>
+    <Saldo>6667</Saldo>
+  </MaterialA>
+  <MaterialA>
+    <Id>3</Id>
+    <Codigo>erty57</Codigo>
+    <Material>dfg</Material>
+    <Unidade>gggg</Unidade>
+    <Saldo>222</Saldo>
+  </MaterialA>
+  <MaterialA>
+    <Id>4</Id>
+    <Codigo>teste111111</Codigo>
+    <Material>teste</Material>
+    <Unidade>gggg</Unidade>
+    <Saldo>2223</Saldo>
+  </MaterialA>
+</ArrayOfMaterialA>

@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="AlmoxarifadoUpas.Pages.Materiais.RemoverMaterial"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid Style="{StaticResource ContentRoot}">
+        <Grid>
+            <DockPanel>
+                <TextBlock DockPanel.Dock="Top" Text="Materiais" Style="{StaticResource Heading2}" Margin="0,0,0,0" />
+                <DataGrid Name="tabela" ItemsSource="{Binding}" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <mui:DataGridTextColumn Header="ID" Binding="{Binding Id}" IsReadOnly="True"  />
+                        <mui:DataGridTextColumn Header="Código" Binding="{Binding Codigo}" />
+                        <mui:DataGridTextColumn Header="Material" Binding="{Binding Material}" />
+                        <mui:DataGridTextColumn Header="Unidade" Binding="{Binding Unidade}" />
+                        <mui:DataGridTextColumn Header="Saldo" Binding="{Binding Saldo}" />
+                        <DataGridTemplateColumn Header="Remover">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Remover" Click="Remover_Click" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </DockPanel>
+
+        </Grid>
+    </Grid>
+</UserControl>
