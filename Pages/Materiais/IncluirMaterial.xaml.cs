@@ -7,6 +7,7 @@ using System;
 using System.Windows.Input;
 using System.Text.RegularExpressions;
 using System.Linq;
+using AlmoxarifadoUpas.Context;
 
 namespace AlmoxarifadoUpas.Pages
 {
@@ -23,17 +24,25 @@ namespace AlmoxarifadoUpas.Pages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MaterialA material = new MaterialA()
+            using (MaterialContext db = new MaterialContext())
             {
-                Id = gerarId(), 
-                Codigo = TextCodigo.Text,
-                Unidade = TextUnidade.Text,
-                Material = TextMaterial.Text,
-                Saldo = Convert.ToInt32(TextSaldo.Text)
-            };
-            materiaisA.Adicionar(material);
-            materiaisA.Salvar();
-            materiaisA.listar();
+                try
+                {
+                    MaterialA materialA = new MaterialA();
+
+                    materialA.Codigo = TextCodigo.Text;
+                    materialA.Material = TextMaterial.Text;
+                    materialA.Unidade = TextUnidade.Text;
+
+                    db.materialA.Add(materialA);
+                    db.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return;
+                }
+            }
         }
 
         private void ValidadorDeNumero(object sender, TextCompositionEventArgs e)
@@ -42,21 +51,5 @@ namespace AlmoxarifadoUpas.Pages
             e.Handled = regex.IsMatch(e.Text);
         }
 
-        public int gerarId()
-        {
-            int id;
-            var ultimoItem = materiaisA.listar().LastOrDefault();
-            
-            if(ultimoItem == null)
-            {
-                id = 1;
-            }
-            else
-            {
-                id = ultimoItem.Id + 1;
-            }
-
-            return id;            
-        }
     }
 }

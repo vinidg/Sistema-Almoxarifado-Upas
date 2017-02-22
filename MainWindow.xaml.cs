@@ -1,6 +1,7 @@
 ﻿using FirstFloor.ModernUI.Windows.Controls;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,9 +24,17 @@ namespace AlmoxarifadoUpas
     {
         public MainWindow()
         {
-            InitializeComponent();
-            MateriaisA material = new MateriaisA();
-            material.Carregar();
+            InitializeComponent();           
+        }
+
+        private void ModernWindow_Initialized(object sender, EventArgs e)
+        {
+            string con = (string)ConfigurationSettings.AppSettings["ConnectionString"];
+            Criptografia cript = new Criptografia();
+            Console.WriteLine(cript.DecryptConnectionString());
+            Console.WriteLine(con);
+
+
         }
     }
 }

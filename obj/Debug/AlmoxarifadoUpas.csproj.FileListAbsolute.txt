@@ -1,7 +1,17 @@
+C:\Users\fu14855\Documents\Visual Studio 2013\Projects\AlmoxarifadoUpas\AlmoxarifadoUpas\bin\Debug\AlmoxarifadoUpas.exe.config
 C:\Users\fu14855\Documents\Visual Studio 2013\Projects\AlmoxarifadoUpas\AlmoxarifadoUpas\bin\Debug\AlmoxarifadoUpas.exe
 C:\Users\fu14855\Documents\Visual Studio 2013\Projects\AlmoxarifadoUpas\AlmoxarifadoUpas\bin\Debug\AlmoxarifadoUpas.pdb
+C:\Users\fu14855\Documents\Visual Studio 2013\Projects\AlmoxarifadoUpas\AlmoxarifadoUpas\bin\Debug\EntityFramework.dll
+C:\Users\fu14855\Documents\Visual Studio 2013\Projects\AlmoxarifadoUpas\AlmoxarifadoUpas\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\fu14855\Documents\Visual Studio 2013\Projects\AlmoxarifadoUpas\AlmoxarifadoUpas\bin\Debug\FirstFloor.ModernUI.dll
+C:\Users\fu14855\Documents\Visual Studio 2013\Projects\AlmoxarifadoUpas\AlmoxarifadoUpas\bin\Debug\System.Data.SQLite.dll
+C:\Users\fu14855\Documents\Visual Studio 2013\Projects\AlmoxarifadoUpas\AlmoxarifadoUpas\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\fu14855\Documents\Visual Studio 2013\Projects\AlmoxarifadoUpas\AlmoxarifadoUpas\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\fu14855\Documents\Visual Studio 2013\Projects\AlmoxarifadoUpas\AlmoxarifadoUpas\bin\Debug\EntityFramework.xml
+C:\Users\fu14855\Documents\Visual Studio 2013\Projects\AlmoxarifadoUpas\AlmoxarifadoUpas\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\fu14855\Documents\Visual Studio 2013\Projects\AlmoxarifadoUpas\AlmoxarifadoUpas\bin\Debug\FirstFloor.ModernUI.xml
+C:\Users\fu14855\Documents\Visual Studio 2013\Projects\AlmoxarifadoUpas\AlmoxarifadoUpas\bin\Debug\System.Data.SQLite.xml
+C:\Users\fu14855\Documents\Visual Studio 2013\Projects\AlmoxarifadoUpas\AlmoxarifadoUpas\obj\Debug\AlmoxarifadoUpas.csprojResolveAssemblyReference.cache
 C:\Users\fu14855\Documents\Visual Studio 2013\Projects\AlmoxarifadoUpas\AlmoxarifadoUpas\obj\Debug\MainWindow.baml
 C:\Users\fu14855\Documents\Visual Studio 2013\Projects\AlmoxarifadoUpas\AlmoxarifadoUpas\obj\Debug\Pages\ConsultaMaterial.baml
 C:\Users\fu14855\Documents\Visual Studio 2013\Projects\AlmoxarifadoUpas\AlmoxarifadoUpas\obj\Debug\Pages\Materiais\RemoverMaterial.baml
@@ -32,4 +42,6 @@ C:\Users\fu14855\Documents\Visual Studio 2013\Projects\AlmoxarifadoUpas\Almoxari
 C:\Users\fu14855\Documents\Visual Studio 2013\Projects\AlmoxarifadoUpas\AlmoxarifadoUpas\obj\Debug\AlmoxarifadoUpas.g.resources
 C:\Users\fu14855\Documents\Visual Studio 2013\Projects\AlmoxarifadoUpas\AlmoxarifadoUpas\obj\Debug\AlmoxarifadoUpas.exe
 C:\Users\fu14855\Documents\Visual Studio 2013\Projects\AlmoxarifadoUpas\AlmoxarifadoUpas\obj\Debug\AlmoxarifadoUpas.pdb
-C:\Users\fu14855\Documents\Visual Studio 2013\Projects\AlmoxarifadoUpas\AlmoxarifadoUpas\obj\Debug\AlmoxarifadoUpas.csprojResolveAssemblyReference.cache
+C:\Users\fu14855\Documents\Visual Studio 2015\Projects\AlmoxarifadoUpas\AlmoxarifadoUpas\bin\Debug\AlmoxarifadoUpas.exe.config
+C:\Users\fu14855\Documents\Visual Studio 2015\Projects\AlmoxarifadoUpas\AlmoxarifadoUpas\obj\Debug\AlmoxarifadoUpas.exe
+C:\Users\fu14855\Documents\Visual Studio 2015\Projects\AlmoxarifadoUpas\AlmoxarifadoUpas\obj\Debug\AlmoxarifadoUpas.pdb

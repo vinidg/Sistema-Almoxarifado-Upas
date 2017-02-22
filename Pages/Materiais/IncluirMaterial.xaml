@@ -48,12 +48,9 @@
                                 <Label Content="Unidade" Target="{Binding ElementName=TextUnidade}"/>
                                 <TextBox x:Name="TextUnidade" Width="200" Text="{Binding Unidade, Mode=TwoWay, ValidatesOnDataErrors=True}"/>
                             </StackPanel>
-                            <StackPanel>
-                                <Label Content="Saldo" Target="{Binding ElementName=TextSaldo}"/>
-                        <TextBox x:Name="TextSaldo" Width="100" PreviewTextInput="ValidadorDeNumero" />
-                            </StackPanel>
+                            <StackPanel/>
 
-                            <Button Content="Inserir" Margin="100,16,0,0" HorizontalAlignment="Left" Click="Button_Click"  />
+                    <Button Content="Inserir" Margin="100,16,0,0" HorizontalAlignment="Left" Click="Button_Click"  />
                         </StackPanel>
             </StackPanel>
         </ScrollViewer>

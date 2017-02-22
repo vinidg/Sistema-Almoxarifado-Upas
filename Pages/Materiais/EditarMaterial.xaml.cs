@@ -20,15 +20,16 @@ namespace AlmoxarifadoUpas.Pages.Materiais
     /// </summary>
     public partial class EditarMaterial : UserControl
     {
+        MateriaisA materiais = new MateriaisA();
         public EditarMaterial()
         {
             InitializeComponent();
-            tabela.DataContext = ;
+            tabela.DataContext = materiais.listar();
         }
 
         private void UserControl_ContextMenuOpening(object sender, ContextMenuEventArgs e)
         {
-            tabela.DataContext = m.listar();
+            tabela.DataContext = materiais.listar();
         }
 
     }

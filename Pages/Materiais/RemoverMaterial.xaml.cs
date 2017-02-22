@@ -12,11 +12,11 @@ namespace AlmoxarifadoUpas.Pages.Materiais
     /// </summary>
     public partial class RemoverMaterial : UserControl
     {
-        MateriaisA materiaisA;
+        MateriaisA materiais = new MateriaisA();
         public RemoverMaterial()
         {
             InitializeComponent();
-            tabela.DataContext = materiaisA.listar();
+            tabela.DataContext = materiais.listar();
         }
 
         private void Remover_Click(object sender, RoutedEventArgs e)
@@ -24,9 +24,14 @@ namespace AlmoxarifadoUpas.Pages.Materiais
             if(tabela.SelectedItems[0].GetType().Equals(typeof(AlmoxarifadoUpas.MaterialA)))
             {
                 MaterialA row = (MaterialA)tabela.SelectedItems[0];
-                materiaisA.Remover(row);
+                materiais.Remover(row);
             }
                 
+        }
+
+        private void UserControl_ContextMenuOpening(object sender, ContextMenuEventArgs e)
+        {
+            tabela.DataContext = materiais.listar();
         }
 
     }

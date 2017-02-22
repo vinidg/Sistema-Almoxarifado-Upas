@@ -3,3 +3,5 @@
 ################################################################################
 
 /bin/Debug/x64/SQLite.Interop.dll
+/bin/Debug/x86/SQLite.Interop.dll
+*.config

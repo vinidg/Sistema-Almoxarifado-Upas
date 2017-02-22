@@ -9,44 +9,39 @@ using System.Xml.Serialization;
 
 namespace AlmoxarifadoUpas
 {
-    class MateriaisA
+    public class MateriaisA
     {
-        private List<MaterialA> _materiais;
-
-        public MateriaisA()
-        {
-            this._materiais = new List<MaterialA>();
-        }
+        public static List<MaterialA> _materiais;
 
         public void Adicionar(MaterialA materiais)
         {
-            if(this._materiais.Count(c => c.Codigo.Equals(materiais.Codigo)) > 0)
+            if(_materiais.Count(c => c.Codigo.Equals(materiais.Codigo)) > 0)
             {
                 MessageBox.Show("Material ja cadastrado !");
                 return;
             }
             else
             {
-                this._materiais.Add(materiais);
+                _materiais.Add(materiais);
             }
         }
 
         public void Remover(MaterialA materiais)
         {
-            var material = this._materiais.SingleOrDefault(x => x.Id == materiais.Id);
-            this._materiais.Remove(material);
+            var material = _materiais.SingleOrDefault(x => x.Id == materiais.Id);
+            _materiais.Remove(material);
             Salvar();
         }
 
         public List<MaterialA> listar()
         {
-            return this._materiais;
+            return _materiais;
         }
         public void Salvar()
         {
             XmlSerializer ser = new XmlSerializer(typeof(List<MaterialA>));
-            FileStream fs = new FileStream(".//ALVES_DIAS_MATERIAIS.xml", FileMode.OpenOrCreate);
-            ser.Serialize(fs, this._materiais);
+            FileStream fs = new FileStream(".//ALVES_DIAS_MATERIAIS.xml", FileMode.Truncate);
+            ser.Serialize(fs, _materiais);
             fs.Close();
         }
 
@@ -56,11 +51,11 @@ namespace AlmoxarifadoUpas
             FileStream fs = new FileStream(".//ALVES_DIAS_MATERIAIS.xml", FileMode.OpenOrCreate);
             try
             {
-                this._materiais = ser.Deserialize(fs) as List<MaterialA>;
+                _materiais = ser.Deserialize(fs) as List<MaterialA>;
             }
             catch(InvalidOperationException ex)
             {
-                ser.Serialize(fs, this._materiais);
+                ser.Serialize(fs, _materiais);
             }
             finally
             {
