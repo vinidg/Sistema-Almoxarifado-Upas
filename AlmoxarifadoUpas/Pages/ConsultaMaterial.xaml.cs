@@ -21,11 +21,12 @@ namespace AlmoxarifadoUpas.Pages
     /// </summary>
     public partial class ConsultaMaterial : UserControl
     {
-        IMateriais material;
+        IMateriais materiais = new MaterialDAO();
         public ConsultaMaterial()
         {
             InitializeComponent();
-            tabela.DataContext = material.Listar();
+            tabela.DataContext = materiais.Listar();
         }
+
     }
 }

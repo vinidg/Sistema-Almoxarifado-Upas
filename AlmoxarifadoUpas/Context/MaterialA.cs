@@ -22,9 +22,9 @@ namespace AlmoxarifadoUpas.Context
     
         public int id_material { get; set; }
         public string codigo { get; set; }
-        public string material { get; set; }
         public string unidade { get; set; }
         public int saldo { get; set; }
+        public string nome { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HistoricoMovimentacao> HistoricoMovimentacao { get; set; }

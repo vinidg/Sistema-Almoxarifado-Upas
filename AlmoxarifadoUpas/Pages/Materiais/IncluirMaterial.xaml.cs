@@ -16,7 +16,7 @@ namespace AlmoxarifadoUpas.Pages
     /// </summary>
     public partial class IncluirMaterial : UserControl
     {
-        IMateriais material;
+        IMateriais materiais = new MaterialDAO();
         public IncluirMaterial()
         {
             InitializeComponent();
@@ -24,11 +24,11 @@ namespace AlmoxarifadoUpas.Pages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (material.VerificarSeCodigoExiste(TextCodigo.Text))
+            if (materiais.VerificarSeCodigoExiste(TextCodigo.Text))
             {
-                material.InserirMaterial(TextCodigo.Text, TextMaterial.Text, TextUnidade.Text);
+                materiais.InserirMaterial(TextCodigo.Text, TextNome.Text, TextUnidade.Text);
                 TextCodigo.Text = "";
-                TextMaterial.Text = "";
+                TextNome.Text = "";
                 TextUnidade.Text = "";
             }
             else

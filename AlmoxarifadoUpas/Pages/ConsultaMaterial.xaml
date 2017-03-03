@@ -10,7 +10,7 @@
         <Grid>
             <DockPanel>
                 <TextBlock DockPanel.Dock="Top" Text="Materiais" Style="{StaticResource Heading2}" Margin="0,0,0,0" />
-                <DataGrid Name="tabela" ItemsSource="{Binding}" AutoGenerateColumns="False">
+                <DataGrid Name="tabela" ItemsSource="{Binding}" AutoGenerateColumns="False" CanUserAddRows="false">
                     <DataGrid.Columns>
                         <mui:DataGridTextColumn Header="ID" Binding="{Binding id_material}" IsReadOnly="True" />
                         <mui:DataGridTextColumn Header="Código" Binding="{Binding codigo}" IsReadOnly="True" />

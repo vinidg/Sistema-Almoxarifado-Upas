@@ -5,16 +5,16 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:mui="http://firstfloorsoftware.com/ModernUI"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300" Initialized="UserControl_Initialized">
+             d:DesignHeight="300" d:DesignWidth="300" Initialized="UserControl_Initialized" ContextMenuOpening="UserControl_ContextMenuOpening">
     <Grid Style="{StaticResource ContentRoot}">
         <Grid>
             <DockPanel>
                 <TextBlock DockPanel.Dock="Top" Text="Materiais" Style="{StaticResource Heading2}" Margin="0,0,0,0" />
-                <DataGrid Name="tabela" ItemsSource="{Binding}" AutoGenerateColumns="False">
+                <DataGrid Name="tabela" ItemsSource="{Binding}" AutoGenerateColumns="False" CanUserAddRows="false">
                     <DataGrid.Columns>
                         <mui:DataGridTextColumn Header="ID" Binding="{Binding id_material}" IsReadOnly="True" />
                         <mui:DataGridTextColumn Header="Código" Binding="{Binding codigo}" IsReadOnly="True" />
-                        <mui:DataGridTextColumn Header="Material" Binding="{Binding material}" IsReadOnly="True" />
+                        <mui:DataGridTextColumn Header="Material" Binding="{Binding nome}" IsReadOnly="True" />
                         <mui:DataGridTextColumn Header="Unidade" Binding="{Binding unidade}" IsReadOnly="True" />
                         <mui:DataGridTextColumn Header="Saldo" Binding="{Binding saldo}" IsReadOnly="True" />
                         <DataGridTemplateColumn Header="Remover">

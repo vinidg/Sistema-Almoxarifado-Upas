@@ -5,7 +5,7 @@ namespace AlmoxarifadoUpas
 {
     interface IMateriais
     {
-        void InserirMaterial(string codigo, string material, string unidade);
+        void InserirMaterial(string codigo, string nome, string unidade);
 
         List<MaterialA> Listar();
 
@@ -13,6 +13,6 @@ namespace AlmoxarifadoUpas
 
         void RemoverMaterial(MaterialA material);
 
-        void EditarMaterial(MaterialA material);
+        void EditarMaterial(int id, string codigo, string nome, string unidade);
     }
 }

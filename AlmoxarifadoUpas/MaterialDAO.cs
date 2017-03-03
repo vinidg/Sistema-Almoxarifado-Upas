@@ -10,7 +10,7 @@ namespace AlmoxarifadoUpas
 {
     class MaterialDAO : IMateriais
     {
-        public void InserirMaterial(string codigo, string material, string unidade)
+        public void InserirMaterial(string codigo, string nome, string unidade)
         {
             using (ALMOXARIFADOUPASEntities db = new ALMOXARIFADOUPASEntities())
             {
@@ -19,7 +19,7 @@ namespace AlmoxarifadoUpas
                         MaterialA materialA = new MaterialA();
 
                         materialA.codigo = codigo;
-                        materialA.material = material;
+                        materialA.nome = nome;
                         materialA.unidade = unidade;
                         db.MaterialA.Add(materialA);
                         db.SaveChanges();
@@ -73,16 +73,17 @@ namespace AlmoxarifadoUpas
             }
         }
 
-        public void EditarMaterial(MaterialA material)
+        public void EditarMaterial(int id, string codigo, string nome, string unidade)
         {
             using (ALMOXARIFADOUPASEntities db = new ALMOXARIFADOUPASEntities())
             {
-                MaterialA EMaterial = db.MaterialA.First(x => x.id_material == material.id_material);
-                EMaterial.codigo = material.codigo;
-                EMaterial.material = material.material;
-                EMaterial.unidade = material.unidade;
+                MaterialA EMaterial = db.MaterialA.First(x => x.id_material == id);
+                EMaterial.codigo = codigo;
+                EMaterial.nome = nome;
+                EMaterial.unidade = unidade;
 
                 db.SaveChanges();
+                MessageBox.Show("Material alterado com sucesso !", Application.Current.MainWindow.Name, MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
     }

@@ -21,7 +21,8 @@ namespace AlmoxarifadoUpas.Pages.Materiais
     /// </summary>
     public partial class EditarMaterial : UserControl
     {
-        IMateriais materiais;
+        IMateriais materiais = new MaterialDAO();
+        MaterialA row;
         public EditarMaterial()
         {
             InitializeComponent();
@@ -31,5 +32,26 @@ namespace AlmoxarifadoUpas.Pages.Materiais
         {
             tabela.DataContext = materiais.Listar();
         }
+
+        private void Editar_Click(object sender, RoutedEventArgs e)
+        {         
+                row = (MaterialA)tabela.SelectedItems[0];
+                TextCodigo.Text = row.codigo;
+                TextNome.Text = row.nome;
+                TextUnidade.Text = row.unidade;
+            
+        }
+
+        private void Confirmar_Click(object sender, RoutedEventArgs e)
+        {
+            materiais.EditarMaterial(row.id_material, TextCodigo.Text, TextNome.Text, TextUnidade.Text);
+            tabela.DataContext = materiais.Listar();
+        }
+
+        private void UserControl_ContextMenuOpening(object sender, ContextMenuEventArgs e)
+        {
+            tabela.DataContext = materiais.Listar();
+        }
     }
+
 }

@@ -12,46 +12,43 @@
             <StackPanel MinWidth="200">
                 <TextBlock Text="Incluir novo material" Style="{StaticResource Heading2}" Margin="0,0,0,8" />
                 <!-- actual form starts here -->
-                        <StackPanel x:Name="Form" Orientation="Vertical">
+                <StackPanel x:Name="Form" Orientation="Vertical">
 
-                            <!-- create viewmodel -->
-                            <StackPanel.DataContext>
-                                <app:MainWindow />
-                            </StackPanel.DataContext>
+                    <!-- create viewmodel -->
+                    <StackPanel.DataContext>
+                        <app:MainWindow />
+                    </StackPanel.DataContext>
 
-                            <StackPanel.Resources>
-                                <Style TargetType="StackPanel">
-                                    <Setter Property="Orientation" Value="Horizontal" />
-                                    <Setter Property="Margin" Value="0,0,0,10" />
-                                </Style>
-                                <Style TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
-                                    <Setter Property="Width" Value="100" />
-                                    <Setter Property="VerticalAlignment" Value="Center" />
-                                </Style>
-                                <Style TargetType="CheckBox" BasedOn="{StaticResource {x:Type CheckBox}}">
-                                    <Setter Property="Padding" Value="0,3" />
-                                </Style>
-                                <Style TargetType="RadioButton" BasedOn="{StaticResource {x:Type RadioButton}}">
-                                    <Setter Property="Padding" Value="0,3" />
-                                </Style>
-                            </StackPanel.Resources>
+                    <StackPanel.Resources>
+                        <Style TargetType="StackPanel">
+                            <Setter Property="Orientation" Value="Horizontal" />
+                            <Setter Property="Margin" Value="0,0,0,10" />
+                        </Style>
+                        <Style TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
+                            <Setter Property="Width" Value="100" />
+                            <Setter Property="VerticalAlignment" Value="Center" />
+                        </Style>
+                        <Style TargetType="RadioButton" BasedOn="{StaticResource {x:Type RadioButton}}">
+                            <Setter Property="Padding" Value="0,3" />
+                        </Style>
+                    </StackPanel.Resources>
 
-                            <StackPanel>
-                                <Label Content="Codigo" Target="{Binding ElementName=TextCodigo}"/>
-                                <TextBox x:Name="TextCodigo" Width="150" Text="{Binding Codigo, Mode=TwoWay, ValidatesOnDataErrors=True}" />
-                            </StackPanel>
-                            <StackPanel>
-                                <Label Content="Material" Target="{Binding ElementName=TextMaterial}"/>
-                                <TextBox x:Name="TextMaterial" Width="200" Text="{Binding Material, Mode=TwoWay, ValidatesOnDataErrors=True}"/>
-                            </StackPanel>
-                            <StackPanel>
-                                <Label Content="Unidade" Target="{Binding ElementName=TextUnidade}"/>
-                                <TextBox x:Name="TextUnidade" Width="200" Text="{Binding Unidade, Mode=TwoWay, ValidatesOnDataErrors=True}"/>
-                            </StackPanel>
-                            <StackPanel/>
+                    <StackPanel>
+                        <Label Content="Codigo" Target="{Binding ElementName=TextCodigo}"/>
+                        <TextBox x:Name="TextCodigo" Width="150" Text="{Binding Codigo, Mode=TwoWay, ValidatesOnDataErrors=True}" />
+                    </StackPanel>
+                    <StackPanel>
+                        <Label Content="Material" Target="{Binding ElementName=TextNome}"/>
+                        <TextBox x:Name="TextNome" Width="200" Text="{Binding Nome, Mode=TwoWay, ValidatesOnDataErrors=True}"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <Label Content="Unidade" Target="{Binding ElementName=TextUnidade}"/>
+                        <TextBox x:Name="TextUnidade" Width="200" Text="{Binding Unidade, Mode=TwoWay, ValidatesOnDataErrors=True}"/>
+                    </StackPanel>
+                    <StackPanel/>
 
                     <Button Content="Inserir" Margin="100,16,0,0" HorizontalAlignment="Left" Click="Button_Click"  />
-                        </StackPanel>
+                </StackPanel>
             </StackPanel>
         </ScrollViewer>
     </Grid>
