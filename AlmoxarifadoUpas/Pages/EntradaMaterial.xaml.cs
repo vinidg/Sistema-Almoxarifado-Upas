@@ -1,5 +1,7 @@
-﻿using System;
+﻿using AlmoxarifadoUpas.Context;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +22,31 @@ namespace AlmoxarifadoUpas.Pages
     /// </summary>
     public partial class Entrada : UserControl
     {
+        private ObservableCollection<MaterialA> materiais = new ObservableCollection<MaterialA>();
+
         public Entrada()
         {
             InitializeComponent();
+            adicionarMaterialAutoComplete();
+        }
+
+        private void adicionarMaterialAutoComplete()
+        {
+            IMateriais materia = new MaterialDAO();
+            materiais = materia.Listar();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        public ObservableCollection<MaterialA> listaAutoComplete
+        {
+            get
+            {
+                return materiais;
+            }
         }
     }
 }

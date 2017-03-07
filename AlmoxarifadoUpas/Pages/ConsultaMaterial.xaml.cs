@@ -25,8 +25,12 @@ namespace AlmoxarifadoUpas.Pages
         public ConsultaMaterial()
         {
             InitializeComponent();
-            tabela.DataContext = materiais.Listar();
+
         }
 
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            tabela.DataContext = materiais.Listar();
+        }
     }
 }

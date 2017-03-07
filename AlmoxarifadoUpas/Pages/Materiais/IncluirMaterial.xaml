@@ -35,15 +35,15 @@
 
                     <StackPanel>
                         <Label Content="Codigo" Target="{Binding ElementName=TextCodigo}"/>
-                        <TextBox x:Name="TextCodigo" Width="150" Text="{Binding Codigo, Mode=TwoWay, ValidatesOnDataErrors=True}" />
+                        <TextBox x:Name="TextCodigo" Width="150" Text="{Binding Codigo, Mode=TwoWay, ValidatesOnDataErrors=True}" CharacterCasing="Upper" />
                     </StackPanel>
                     <StackPanel>
                         <Label Content="Material" Target="{Binding ElementName=TextNome}"/>
-                        <TextBox x:Name="TextNome" Width="200" Text="{Binding Nome, Mode=TwoWay, ValidatesOnDataErrors=True}"/>
+                        <TextBox x:Name="TextNome" Width="200" Text="{Binding Nome, Mode=TwoWay, ValidatesOnDataErrors=True}" CharacterCasing="Upper" />
                     </StackPanel>
                     <StackPanel>
-                        <Label Content="Unidade" Target="{Binding ElementName=TextUnidade}"/>
-                        <TextBox x:Name="TextUnidade" Width="200" Text="{Binding Unidade, Mode=TwoWay, ValidatesOnDataErrors=True}"/>
+                        <Label Content="Unidade" Target="{Binding ElementName=cbUnidade}"/>
+                        <ComboBox x:Name="cbUnidade" Width="150" ItemsSource="{Binding Unidade, Mode=TwoWay, ValidatesOnDataErrors=True}" SelectedItem="{Binding Unidade, Mode=TwoWay, ValidatesOnDataErrors=True}" />
                     </StackPanel>
                     <StackPanel/>
 

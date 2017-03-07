@@ -24,7 +24,8 @@ namespace AlmoxarifadoUpas
     {
         public MainWindow()
         {
-            InitializeComponent();           
+            InitializeComponent();
+            
         }
 
         private void ModernWindow_Closed(object sender, EventArgs e)

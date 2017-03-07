@@ -20,16 +20,22 @@ namespace AlmoxarifadoUpas.Pages
         public IncluirMaterial()
         {
             InitializeComponent();
+            cbUnidade.ItemsSource = Enum.GetValues(typeof(Unidade)).Cast<Unidade>();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (materiais.VerificarSeCodigoExiste(TextCodigo.Text))
             {
-                materiais.InserirMaterial(TextCodigo.Text, TextNome.Text, TextUnidade.Text);
+                MaterialA material = new MaterialA();
+                material.codigo = TextCodigo.Text;
+                material.nome = TextNome.Text;
+                material.unidade = cbUnidade.SelectedItem.ToString();
+
+                materiais.InserirMaterial(material);
                 TextCodigo.Text = "";
                 TextNome.Text = "";
-                TextUnidade.Text = "";
+                cbUnidade.Text = "";
             }
             else
             {

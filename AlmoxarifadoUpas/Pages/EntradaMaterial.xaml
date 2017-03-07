@@ -4,10 +4,49 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:mui="http://firstfloorsoftware.com/ModernUI"
-             xmlns:app="clr-namespace:AlmoxarifadoUpas"
-             mc:Ignorable="d" 
+             xmlns:app="clr-namespace:AlmoxarifadoUpas.Pages"
+    mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="400">
     <Grid Style="{StaticResource ContentRoot}">
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <DockPanel>
+            <StackPanel x:Name="search" Orientation="Vertical">
+                <StackPanel.Resources>
+                    <Style TargetType="{x:Type StackPanel}">
+                        <Setter Property="Orientation" Value="Vertical" />
+                        <Setter Property="Margin" Value="0,0,0,10" />
+                    </Style>
+                    <Style TargetType="{x:Type Label}" BasedOn="{StaticResource {x:Type Label}}">
+                        <Setter Property="HorizontalAlignment" Value="Center" />
+                        <Setter Property="Margin" Value="0,0,0,6" />
+                    </Style>
+                    <DataTemplate x:Key="materiaisAutoComplete">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding nome}" />
+                            <TextBlock Text=" " />
+                            <TextBlock Text="{Binding codigo}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </StackPanel.Resources>
+
+                <StackPanel>
+                    <Label Content="Pesquisar por nome" Target="{Binding ElementName=AutoCompleteNome}"/>
+                    <TextBox x:Name="AutoCompleteNome" Width="150" Text="" />
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="Pesquisar por código" Target="{Binding ElementName=AutoCompleteNome}"/>
+                    <TextBox x:Name="AutoCompleteCodigo" Width="150" Text="" />
+                </StackPanel>
+                
+            </StackPanel>
+        </DockPanel>
+        
+        <DockPanel Grid.Row="1">
         <ScrollViewer>
             <StackPanel MinWidth="400">
                 <TextBlock Text="Incluir entrada de insumos" Style="{StaticResource Heading2}" Margin="0,0,0,8" />
@@ -40,10 +79,11 @@
                         <Label Content="Quantidade movimentada" Target="{Binding ElementName=TextMovimento}"/>
                         <TextBox x:Name="TextMovimento" Width="150"/>
                     </StackPanel>
-                    <Button Content="Confirmar" Margin="200,16,0,0" HorizontalAlignment="Left" />
+                    <Button Content="Confirmar" Margin="200,16,0,0" HorizontalAlignment="Left" Click="Button_Click" />
                 </StackPanel>
                 <!-- actual form starts here -->
             </StackPanel>
         </ScrollViewer>
+        </DockPanel>
     </Grid>
 </UserControl>

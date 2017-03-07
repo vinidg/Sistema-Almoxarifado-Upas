@@ -26,11 +26,7 @@ namespace AlmoxarifadoUpas.Pages.Materiais
         public EditarMaterial()
         {
             InitializeComponent();
-        }
-
-        private void tabela_Initialized(object sender, EventArgs e)
-        {
-            tabela.DataContext = materiais.Listar();
+            cbUnidade.ItemsSource = Enum.GetValues(typeof(Unidade)).Cast<Unidade>();
         }
 
         private void Editar_Click(object sender, RoutedEventArgs e)
@@ -38,17 +34,17 @@ namespace AlmoxarifadoUpas.Pages.Materiais
                 row = (MaterialA)tabela.SelectedItems[0];
                 TextCodigo.Text = row.codigo;
                 TextNome.Text = row.nome;
-                TextUnidade.Text = row.unidade;
+                cbUnidade.Text = row.unidade;
             
         }
 
         private void Confirmar_Click(object sender, RoutedEventArgs e)
         {
-            materiais.EditarMaterial(row.id_material, TextCodigo.Text, TextNome.Text, TextUnidade.Text);
+            materiais.EditarMaterial(row.id_material, TextCodigo.Text, TextNome.Text, cbUnidade.Text);
             tabela.DataContext = materiais.Listar();
         }
 
-        private void UserControl_ContextMenuOpening(object sender, ContextMenuEventArgs e)
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             tabela.DataContext = materiais.Listar();
         }

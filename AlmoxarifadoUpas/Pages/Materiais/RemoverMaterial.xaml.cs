@@ -21,20 +21,12 @@ namespace AlmoxarifadoUpas.Pages.Materiais
 
         private void Remover_Click(object sender, RoutedEventArgs e)
         {
-            if(tabela.SelectedItems[0].GetType().Equals(typeof(AlmoxarifadoUpas.Context.MaterialA)))
-            {
-                MaterialA row = (MaterialA)tabela.SelectedItems[0];
-                materiais.RemoverMaterial(row);
-            }
-                
-        }
-
-        private void UserControl_Initialized(object sender, EventArgs e)
-        {
+            MaterialA row = (MaterialA)tabela.SelectedItems[0];
+            materiais.RemoverMaterial(row);
             tabela.DataContext = materiais.Listar();
         }
 
-        private void UserControl_ContextMenuOpening(object sender, ContextMenuEventArgs e)
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             tabela.DataContext = materiais.Listar();
         }

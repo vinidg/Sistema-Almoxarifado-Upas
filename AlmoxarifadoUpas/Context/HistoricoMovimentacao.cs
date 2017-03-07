@@ -17,7 +17,7 @@ namespace AlmoxarifadoUpas.Context
         public int id_movimento { get; set; }
         public string origem { get; set; }
         public string destino { get; set; }
-        public Nullable<int> quantidade { get; set; }
+        public int quantidade { get; set; }
         public int id_materialA { get; set; }
         public string tipoMovimentacao { get; set; }
     

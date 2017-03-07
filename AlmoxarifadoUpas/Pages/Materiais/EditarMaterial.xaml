@@ -8,7 +8,7 @@
              xmlns:local="clr-namespace:AlmoxarifadoUpas"
              xmlns:app="clr-namespace:AlmoxarifadoUpas"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300" ContextMenuOpening="UserControl_ContextMenuOpening">
+             d:DesignHeight="300" d:DesignWidth="349.696" Loaded="UserControl_Loaded">
     
     <Grid Style="{StaticResource ContentRoot}">
 
@@ -19,7 +19,7 @@
         
         <DockPanel>
             <TextBlock DockPanel.Dock="Top" Text="Materiais" Style="{StaticResource Heading2}" Margin="0,0,0,0" />
-            <DataGrid Name="tabela" ItemsSource="{Binding}" AutoGenerateColumns="False" Initialized="tabela_Initialized" CanUserAddRows="false">
+            <DataGrid Name="tabela" ItemsSource="{Binding}" AutoGenerateColumns="False" CanUserAddRows="false">
                 <DataGrid.Columns>
                     <mui:DataGridTextColumn Header="ID" Binding="{Binding id_material}" IsReadOnly="True" />
                     <mui:DataGridTextColumn Header="Código" Binding="{Binding codigo}" IsReadOnly="True" />
@@ -65,19 +65,19 @@
 
                         <StackPanel>
                             <Label Content="Codigo" Target="{Binding ElementName=TextCodigo}"/>
-                            <TextBox x:Name="TextCodigo" Width="150" Text="{Binding Codigo, Mode=TwoWay, ValidatesOnDataErrors=True}" />
+                            <TextBox x:Name="TextCodigo" Width="150" Text="{Binding Codigo, Mode=TwoWay, ValidatesOnDataErrors=True}" CharacterCasing="Upper"/>
                         </StackPanel>
                         <StackPanel>
                             <Label Content="Material" Target="{Binding ElementName=TextNome}"/>
-                            <TextBox x:Name="TextNome" Width="200" Text="{Binding Nome, Mode=TwoWay, ValidatesOnDataErrors=True}"/>
+                            <TextBox x:Name="TextNome" Width="200" Text="{Binding Nome, Mode=TwoWay, ValidatesOnDataErrors=True}" CharacterCasing="Upper"/>
                         </StackPanel>
                         <StackPanel>
-                            <Label Content="Unidade" Target="{Binding ElementName=TextUnidade}"/>
-                            <TextBox x:Name="TextUnidade" Width="200" Text="{Binding Unidade, Mode=TwoWay, ValidatesOnDataErrors=True}"/>
+                            <Label Content="Unidade" Target="{Binding ElementName=cbUnidade}"/>
+                            <ComboBox x:Name="cbUnidade" Width="150" ItemsSource="{Binding Unidade, Mode=TwoWay, ValidatesOnDataErrors=True}" SelectedItem="{Binding Unidade, Mode=TwoWay, ValidatesOnDataErrors=True}" />
                         </StackPanel>
                         <StackPanel/>
 
-                        <Button Content="Editar" Margin="100,16,0,0" HorizontalAlignment="Left" Click="Confirmar_Click"  />
+                        <Button Content="Editar" Margin="100,16,0,0" HorizontalAlignment="Left" Click="Confirmar_Click" />
                     </StackPanel>
                 </StackPanel>
             </ScrollViewer>
