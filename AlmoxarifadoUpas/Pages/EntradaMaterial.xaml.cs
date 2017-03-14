@@ -22,31 +22,41 @@ namespace AlmoxarifadoUpas.Pages
     /// </summary>
     public partial class Entrada : UserControl
     {
-        private ObservableCollection<MaterialA> materiais = new ObservableCollection<MaterialA>();
-
+        IMateriais materiais = new MaterialDAO();
         public Entrada()
         {
             InitializeComponent();
-            adicionarMaterialAutoComplete();
         }
 
-        private void adicionarMaterialAutoComplete()
-        {
-            IMateriais materia = new MaterialDAO();
-            materiais = materia.Listar();
-        }
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            HistoricoMovimentacao hm = new HistoricoMovimentacao();
+            hm.id_materialA = Convert.ToInt32(id_material.Text);
+            hm.origem = TextOrigem.Text;
+            hm.destino = TextDestino.Text;
+            hm.quantidade = Convert.ToInt32(TextMovimento.Text);
+            hm.tipoMovimentacao = "ENTRADA";
 
+            materiais.EntradaDeMateriais(hm);
         }
 
-        public ObservableCollection<MaterialA> listaAutoComplete
+        private void AutoCompleteNome_TextChanged(object sender, TextChangedEventArgs e)
         {
-            get
+            if (AutoCompleteNome.Text.Length == 1)
             {
-                return materiais;
+                ConsultaMaterialEntradaSaida cme = new ConsultaMaterialEntradaSaida();
+                List<MaterialA> listaMaterial = cme.materiais;
+
+                using (Entities db = new Entities())
+                {
+                    var con = (from materia in db.MaterialA where materia.codigo.Contains(AutoCompleteNome.Text.ToLower()) || materia.nome.Contains(AutoCompleteNome.Text.ToLower()) select materia).ToList();
+                    listaMaterial = con;
+                }
+                AutoCompleteNome.ItemsSource = listaMaterial;
             }
+
         }
     }
 }

@@ -30,7 +30,7 @@ namespace AlmoxarifadoUpas
             }
         }
 
-        public ObservableCollection<MaterialA> Listar()
+        public List<MaterialA> Listar()
         {
             List<MaterialA> materiais = new List<MaterialA>();
             using (Entities db = new Entities())
@@ -77,7 +77,7 @@ namespace AlmoxarifadoUpas
                 MaterialA EMaterial = db.MaterialA.First(x => x.id_material == id);
                 EMaterial.codigo = codigo;
                 EMaterial.nome = nome;
-                //EMaterial.unidade = unidade;
+                EMaterial.unidade = unidade;
 
                 db.SaveChanges();
                 MessageBox.Show("Material alterado com sucesso !", Application.Current.MainWindow.Name, MessageBoxButton.OK, MessageBoxImage.Information);
@@ -131,5 +131,6 @@ namespace AlmoxarifadoUpas
                 }
             }
         }
+
     }
 }

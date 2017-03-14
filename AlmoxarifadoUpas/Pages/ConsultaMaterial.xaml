@@ -14,7 +14,7 @@
                     <DataGrid.Columns>
                         <mui:DataGridTextColumn Header="ID" Binding="{Binding id_material}" IsReadOnly="True" />
                         <mui:DataGridTextColumn Header="Código" Binding="{Binding codigo}" IsReadOnly="True" />
-                        <mui:DataGridTextColumn Header="Material" Binding="{Binding material}" IsReadOnly="True" />
+                        <mui:DataGridTextColumn Header="Material" Binding="{Binding nome}" IsReadOnly="True" />
                         <mui:DataGridTextColumn Header="Unidade" Binding="{Binding unidade}" IsReadOnly="True" />
                         <mui:DataGridTextColumn Header="Saldo" Binding="{Binding saldo}" IsReadOnly="True" />
                     </DataGrid.Columns>

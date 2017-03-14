@@ -1,19 +1,19 @@
-﻿<UserControl x:Class="AlmoxarifadoUpas.Pages.Entrada"
+﻿<UserControl x:Class="AlmoxarifadoUpas.Pages.Entrada" Name="entrada"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:mui="http://firstfloorsoftware.com/ModernUI"
-             xmlns:app="clr-namespace:AlmoxarifadoUpas.Pages"
-    mc:Ignorable="d" 
+             xmlns:app="clr-namespace:AlmoxarifadoUpas"
+             xmlns:actb="clr-namespace:Aviad.WPF.Controls;assembly=Aviad.WPF.Controls"
+             mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="400">
     <Grid Style="{StaticResource ContentRoot}">
-        
         <Grid.RowDefinitions>
-            <RowDefinition Height="120" />
+            <RowDefinition Height="90" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-
+    
         <DockPanel>
             <StackPanel x:Name="search" Orientation="Vertical">
                 <StackPanel.Resources>
@@ -25,65 +25,88 @@
                         <Setter Property="HorizontalAlignment" Value="Center" />
                         <Setter Property="Margin" Value="0,0,0,6" />
                     </Style>
-                    <DataTemplate x:Key="materiaisAutoComplete">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding nome}" />
-                            <TextBlock Text=" " />
-                            <TextBlock Text="{Binding codigo}" />
-                        </StackPanel>
+                    <DataTemplate x:Key="template">
+                        <Border BorderBrush="White" BorderThickness="2" CornerRadius="3">
+                            <Grid Background="White">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <TextBlock Text="Código:    "/>
+                                <TextBlock Grid.Column="1" Text="{Binding codigo}" />
+                                <TextBlock Grid.Row="1" Text="Material:     " />
+                                <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding nome}"/>
+                                <TextBlock Grid.Row="2" Text="Unidade:  " />
+                                <TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding unidade}" />
+                                <TextBlock Grid.Row="3" Text="Saldo:  " />
+                                <TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding saldo}" />
+                            </Grid>
+                        </Border>
                     </DataTemplate>
+                    <app:ConsultaMaterialEntradaSaida x:Key="listaMaterial" />
                 </StackPanel.Resources>
 
                 <StackPanel>
-                    <Label Content="Pesquisar por nome" Target="{Binding ElementName=AutoCompleteNome}"/>
-                    <TextBox x:Name="AutoCompleteNome" Width="150" Text="" />
+                    <Label Content="Pesquisar por nome ou código:" Target="{Binding ElementName=AutoCompleteNome}"/>
+                    <Grid >
+                        <actb:AutoCompleteTextBox 
+                                x:Name="AutoCompleteNome"
+                                VerticalAlignment="Top"
+                                Width="250"
+                                ItemsSource="{Binding Source={StaticResource listaMaterial}, Path=materiais}"
+                                ItemTemplate="{StaticResource template}"
+                                Binding="{Binding codigo}"
+                                MaxCompletions="10" TextChanged="AutoCompleteNome_TextChanged" />
+                    </Grid>
+                    <TextBox x:Name="id_material" Width="150" Text="{Binding id_material, Mode=TwoWay, ValidatesOnDataErrors=True}"/>
                 </StackPanel>
-                <StackPanel>
-                    <Label Content="Pesquisar por código" Target="{Binding ElementName=AutoCompleteNome}"/>
-                    <TextBox x:Name="AutoCompleteCodigo" Width="150" Text="" />
-                </StackPanel>
-                
             </StackPanel>
         </DockPanel>
-        
+
         <DockPanel Grid.Row="1">
-        <ScrollViewer>
-            <StackPanel MinWidth="400">
-                <TextBlock Text="Incluir entrada de insumos" Style="{StaticResource Heading2}" Margin="0,0,0,8" />
-                <StackPanel x:Name="Form" Orientation="Vertical">
+            <ScrollViewer>
+                <StackPanel MinWidth="400">
+                    <TextBlock Text="Incluir entrada de insumos" Style="{StaticResource Heading2}" Margin="0,0,0,8" />
+                    <StackPanel x:Name="Form" Orientation="Vertical">
 
-                    <StackPanel.Resources>
-                        <Style TargetType="{x:Type StackPanel}">
-                            <Setter Property="Orientation" Value="Horizontal" />
-                            <Setter Property="Margin" Value="0,0,0,10" />
-                        </Style>
-                        <Style TargetType="{x:Type Label}" BasedOn="{StaticResource {x:Type Label}}">
-                            <Setter Property="Width" Value="200" />
-                            <Setter Property="VerticalAlignment" Value="Center" />
-                        </Style>
-                    </StackPanel.Resources>
-                    <!-- create viewmodel -->
-                    <StackPanel.DataContext>
-                        <app:MainWindow />
-                    </StackPanel.DataContext>
+                        <StackPanel.Resources>
+                            <Style TargetType="{x:Type StackPanel}">
+                                <Setter Property="Orientation" Value="Horizontal" />
+                                <Setter Property="Margin" Value="0,0,0,10" />
+                            </Style>
+                            <Style TargetType="{x:Type Label}" BasedOn="{StaticResource {x:Type Label}}">
+                                <Setter Property="Width" Value="200" />
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                            </Style>
+                        </StackPanel.Resources>
+                        <!-- create viewmodel -->
+                        <StackPanel.DataContext>
+                            <app:MainWindow />
+                        </StackPanel.DataContext>
 
-                    <StackPanel>
-                        <Label Content="Origem" Target="{Binding ElementName=TextOrigem}"/>
-                        <TextBox x:Name="TextOrigem" Width="150" Text="{Binding Origem, Mode=TwoWay, ValidatesOnDataErrors=True}" />
+                        <StackPanel>
+                            <Label Content="Origem" Target="{Binding ElementName=TextOrigem}"/>
+                            <TextBox x:Name="TextOrigem" Width="150" Text="{Binding Origem, Mode=TwoWay, ValidatesOnDataErrors=True}" />
+                        </StackPanel>
+                        <StackPanel>
+                            <Label Content="Destino" Target="{Binding ElementName=TextDestino}"/>
+                            <TextBox x:Name="TextDestino" Width="150" Text="{Binding Destino, Mode=TwoWay, ValidatesOnDataErrors=True}"/>
+                        </StackPanel>
+                        <StackPanel>
+                            <Label Content="Quantidade movimentada" Target="{Binding ElementName=TextMovimento}"/>
+                            <TextBox x:Name="TextMovimento" Width="150"/>
+                        </StackPanel>
+                        <Button Content="Confirmar" Margin="200,16,0,0" HorizontalAlignment="Left" Click="Button_Click" />
                     </StackPanel>
-                    <StackPanel>
-                        <Label Content="Destino" Target="{Binding ElementName=TextDestino}"/>
-                        <TextBox x:Name="TextDestino" Width="150" Text="{Binding Destino, Mode=TwoWay, ValidatesOnDataErrors=True}"/>
-                    </StackPanel>
-                    <StackPanel>
-                        <Label Content="Quantidade movimentada" Target="{Binding ElementName=TextMovimento}"/>
-                        <TextBox x:Name="TextMovimento" Width="150"/>
-                    </StackPanel>
-                    <Button Content="Confirmar" Margin="200,16,0,0" HorizontalAlignment="Left" Click="Button_Click" />
+                    <!-- actual form starts here -->
                 </StackPanel>
-                <!-- actual form starts here -->
-            </StackPanel>
-        </ScrollViewer>
+            </ScrollViewer>
         </DockPanel>
     </Grid>
 </UserControl>

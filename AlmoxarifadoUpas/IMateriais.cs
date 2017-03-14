@@ -8,7 +8,7 @@ namespace AlmoxarifadoUpas
     {
         void InserirMaterial(MaterialA material);
 
-        ObservableCollection<MaterialA> Listar();
+        List<MaterialA> Listar();
 
         bool VerificarSeCodigoExiste(string codigoMaterial);
 
@@ -19,5 +19,6 @@ namespace AlmoxarifadoUpas
         void EntradaDeMateriais(HistoricoMovimentacao historico);
 
         void SaidaDeMateriais(HistoricoMovimentacao historico);
+
     }
 }
