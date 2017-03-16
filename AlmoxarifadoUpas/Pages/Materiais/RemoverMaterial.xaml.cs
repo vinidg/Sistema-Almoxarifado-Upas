@@ -23,12 +23,12 @@ namespace AlmoxarifadoUpas.Pages.Materiais
         {
             MaterialA row = (MaterialA)tabela.SelectedItems[0];
             materiais.RemoverMaterial(row);
-            tabela.DataContext = materiais.Listar();
+            tabela.DataContext = materiais.ListarMateriais();
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            tabela.DataContext = materiais.Listar();
+            tabela.DataContext = materiais.ListarMateriais();
         }
     }
 }

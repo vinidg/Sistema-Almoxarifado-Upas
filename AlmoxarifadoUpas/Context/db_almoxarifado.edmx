@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ALMOXARIFADOUPASModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ALMOXARIFADOUPASModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="HistoricoMovimentacao">
           <Key>
             <PropertyRef Name="id_movimento" />
@@ -25,6 +25,7 @@
           <Property Name="unidade" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="saldo" Type="int" Nullable="false" />
           <Property Name="nome" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="desativado" Type="bit" Nullable="false" />
         </EntityType>
         <Association Name="FK__Historico__id_ma__1367E606">
           <End Role="MaterialA" Type="Self.MaterialA" Multiplicity="1" />
@@ -46,8 +47,7 @@
             <End Role="HistoricoMovimentacao" EntitySet="HistoricoMovimentacao" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ALMOXARIFADOUPASModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -73,6 +73,7 @@
           <Property Name="saldo" Type="Int32" Nullable="false" />
           <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="HistoricoMovimentacao" Relationship="Self.FK__Historico__id_ma__1367E606" FromRole="MaterialA" ToRole="HistoricoMovimentacao" />
+          <Property Name="desativado" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="FK__Historico__id_ma__1367E606">
           <End Role="MaterialA" Type="Self.MaterialA" Multiplicity="1" />
@@ -115,6 +116,7 @@
           <EntitySetMapping Name="MaterialA">
             <EntityTypeMapping TypeName="ALMOXARIFADOUPASModel.MaterialA">
               <MappingFragment StoreEntitySet="MaterialA">
+                <ScalarProperty Name="desativado" ColumnName="desativado" />
                 <ScalarProperty Name="id_material" ColumnName="id_material" />
                 <ScalarProperty Name="codigo" ColumnName="codigo" />
                 <ScalarProperty Name="unidade" ColumnName="unidade" />

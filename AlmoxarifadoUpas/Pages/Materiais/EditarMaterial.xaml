@@ -26,6 +26,7 @@
                     <mui:DataGridTextColumn Header="Material" Binding="{Binding nome}" IsReadOnly="True" />
                     <mui:DataGridTextColumn Header="Unidade" Binding="{Binding unidade}" IsReadOnly="True" />
                     <mui:DataGridTextColumn Header="Saldo" Binding="{Binding saldo}" IsReadOnly="True" />
+                    <mui:DataGridCheckBoxColumn Header="Desativado" Binding="{Binding desativado}" IsReadOnly="True" />
                     <DataGridTemplateColumn Header="Remover">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>

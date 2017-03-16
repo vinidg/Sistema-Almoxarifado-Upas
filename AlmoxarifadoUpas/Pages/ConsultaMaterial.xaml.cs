@@ -30,7 +30,8 @@ namespace AlmoxarifadoUpas.Pages
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            tabela.DataContext = materiais.Listar();
+            tabelaMateriais.DataContext = materiais.ListarMateriais();
+            tabelaHistorico.DataContext = materiais.ListarHistorico();
         }
     }
 }

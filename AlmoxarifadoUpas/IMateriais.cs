@@ -8,8 +8,10 @@ namespace AlmoxarifadoUpas
     {
         void InserirMaterial(MaterialA material);
 
-        List<MaterialA> Listar();
+        List<MaterialA> ListarMateriais();
 
+        List<HistoricoMovimentacao> ListarHistorico();
+        
         bool VerificarSeCodigoExiste(string codigoMaterial);
 
         void RemoverMaterial(MaterialA material);
@@ -20,5 +22,8 @@ namespace AlmoxarifadoUpas
 
         void SaidaDeMateriais(HistoricoMovimentacao historico);
 
+        int PegarIdMaterial(string codigo);
+
+        List<MaterialA> autoComplete(string AutoCompleteNome);
     }
 }

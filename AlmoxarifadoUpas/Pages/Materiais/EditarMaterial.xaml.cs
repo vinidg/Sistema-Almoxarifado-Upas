@@ -41,12 +41,16 @@ namespace AlmoxarifadoUpas.Pages.Materiais
         private void Confirmar_Click(object sender, RoutedEventArgs e)
         {
             materiais.EditarMaterial(row.id_material, TextCodigo.Text, TextNome.Text, cbUnidade.Text);
-            tabela.DataContext = materiais.Listar();
+            tabela.DataContext = materiais.ListarMateriais();
+
+            TextCodigo.Clear();
+            TextNome.Clear();
+            cbUnidade.SelectedIndex = 1;
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            tabela.DataContext = materiais.Listar();
+            tabela.DataContext = materiais.ListarMateriais();
         }
     }
 

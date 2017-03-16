@@ -7,7 +7,7 @@
              xmlns:app="clr-namespace:AlmoxarifadoUpas"
              xmlns:actb="clr-namespace:Aviad.WPF.Controls;assembly=Aviad.WPF.Controls"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="400">
+             d:DesignHeight="300" d:DesignWidth="564">
     <Grid Style="{StaticResource ContentRoot}">
         <Grid.RowDefinitions>
             <RowDefinition Height="90" />
@@ -64,7 +64,6 @@
                                 Binding="{Binding codigo}"
                                 MaxCompletions="10" TextChanged="AutoCompleteNome_TextChanged" />
                     </Grid>
-                    <TextBox x:Name="id_material" Width="150" Text="{Binding id_material, Mode=TwoWay, ValidatesOnDataErrors=True}"/>
                 </StackPanel>
             </StackPanel>
         </DockPanel>
@@ -92,17 +91,20 @@
 
                         <StackPanel>
                             <Label Content="Origem" Target="{Binding ElementName=TextOrigem}"/>
-                            <TextBox x:Name="TextOrigem" Width="150" Text="{Binding Origem, Mode=TwoWay, ValidatesOnDataErrors=True}" />
+                            <TextBox x:Name="TextOrigem" Width="150" />
                         </StackPanel>
                         <StackPanel>
                             <Label Content="Destino" Target="{Binding ElementName=TextDestino}"/>
-                            <TextBox x:Name="TextDestino" Width="150" Text="{Binding Destino, Mode=TwoWay, ValidatesOnDataErrors=True}"/>
+                            <TextBox x:Name="TextDestino" Width="150" />
                         </StackPanel>
                         <StackPanel>
                             <Label Content="Quantidade movimentada" Target="{Binding ElementName=TextMovimento}"/>
-                            <TextBox x:Name="TextMovimento" Width="150"/>
+                            <TextBox x:Name="TextMovimento" Width="150" PreviewTextInput="validacaoNumero"/>
                         </StackPanel>
-                        <Button Content="Confirmar" Margin="200,16,0,0" HorizontalAlignment="Left" Click="Button_Click" />
+                        <StackPanel>
+                            <Button Content="Confirmar" Margin="200,16,0,0" HorizontalAlignment="Left" Click="Confirmar_Click" />
+                            <Button Content="Limpar" Margin="150,16,0,0" HorizontalAlignment="Left" Click="Limpar_Click" />
+                        </StackPanel>
                     </StackPanel>
                     <!-- actual form starts here -->
                 </StackPanel>

@@ -18,6 +18,15 @@ namespace AlmoxarifadoUpas
                 try
                 {
                     db.MaterialA.Add(material);
+
+                    HistoricoMovimentacao hm = new HistoricoMovimentacao();
+                    hm.id_materialA = material.id_material;
+                    hm.destino = "";
+                    hm.origem = "";
+                    hm.quantidade = 0;
+                    hm.tipoMovimentacao = TipoMovimentacao.Inserir_material.ToString();
+
+                    db.HistoricoMovimentacao.Add(hm);
                     db.SaveChanges();
 
                     MessageBox.Show("Material cadastrado com sucesso !", Application.Current.MainWindow.Name, MessageBoxButton.OK, MessageBoxImage.Information);
@@ -30,7 +39,7 @@ namespace AlmoxarifadoUpas
             }
         }
 
-        public List<MaterialA> Listar()
+        public List<MaterialA> ListarMateriais()
         {
             List<MaterialA> materiais = new List<MaterialA>();
             using (Entities db = new Entities())
@@ -39,6 +48,17 @@ namespace AlmoxarifadoUpas
                              select MaterialA).ToList();
             }
             return materiais;
+        }
+
+        public List<HistoricoMovimentacao> ListarHistorico()
+        {
+            List<HistoricoMovimentacao> historico = new List<HistoricoMovimentacao>();
+            using (Entities db = new Entities())
+            {
+                historico = (from h in db.HistoricoMovimentacao
+                             select h).ToList();
+            }
+            return historico;
         }
 
         public bool VerificarSeCodigoExiste(string codigoMaterial)
@@ -64,7 +84,15 @@ namespace AlmoxarifadoUpas
             using (Entities db = new Entities())
             {
                 MaterialA m = db.MaterialA.First(x => x.id_material == material.id_material);
-                db.MaterialA.Remove(m);
+                m.desativado = true;
+
+                HistoricoMovimentacao hm = new HistoricoMovimentacao();
+                hm.id_materialA = material.id_material;
+                hm.destino = "";
+                hm.origem = "";
+                hm.quantidade = 0;
+                hm.tipoMovimentacao = TipoMovimentacao.Remover_material.ToString();
+
                 db.SaveChanges();
                 MessageBox.Show("Material removido com sucesso !", Application.Current.MainWindow.Name, MessageBoxButton.OK, MessageBoxImage.Information);
             }
@@ -74,10 +102,17 @@ namespace AlmoxarifadoUpas
         {
             using (Entities db = new Entities())
             {
-                MaterialA EMaterial = db.MaterialA.First(x => x.id_material == id);
-                EMaterial.codigo = codigo;
-                EMaterial.nome = nome;
-                EMaterial.unidade = unidade;
+                MaterialA material = db.MaterialA.First(x => x.id_material == id);
+                material.codigo = codigo;
+                material.nome = nome;
+                material.unidade = unidade;
+
+                HistoricoMovimentacao hm = new HistoricoMovimentacao();
+                hm.id_materialA = material.id_material;
+                hm.destino = "";
+                hm.origem = "";
+                hm.quantidade = 0;
+                hm.tipoMovimentacao = TipoMovimentacao.alterar_material.ToString();
 
                 db.SaveChanges();
                 MessageBox.Show("Material alterado com sucesso !", Application.Current.MainWindow.Name, MessageBoxButton.OK, MessageBoxImage.Information);
@@ -130,6 +165,33 @@ namespace AlmoxarifadoUpas
                     return;
                 }
             }
+        }
+
+        public int PegarIdMaterial(string codigo)
+        {
+            int id_material=0;
+            using (Entities db = new Entities())
+            {
+                var id = (from m in db.MaterialA
+                         where m.codigo == codigo
+                         select m.id_material).First();
+                id_material = Convert.ToInt32(id);
+            }
+            return id_material;
+        }
+
+        public List<MaterialA> autoComplete(string AutoCompleteNome)
+       {
+            ConsultaMaterialEntradaSaida cme = new ConsultaMaterialEntradaSaida();
+            List<MaterialA> listaMaterial = cme.materiais;
+
+            using (Entities db = new Entities())
+            {
+                var con = (from materia in db.MaterialA where materia.codigo.Contains(AutoCompleteNome.ToLower()) || materia.nome.Contains(AutoCompleteNome.ToLower()) select materia).ToList();
+                listaMaterial = con;
+            }
+
+            return listaMaterial;
         }
 
     }

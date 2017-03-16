@@ -31,16 +31,17 @@ namespace AlmoxarifadoUpas.Pages
                 material.codigo = TextCodigo.Text;
                 material.nome = TextNome.Text;
                 material.unidade = cbUnidade.SelectedItem.ToString();
+                material.desativado = false;
 
                 materiais.InserirMaterial(material);
-                TextCodigo.Text = "";
-                TextNome.Text = "";
-                cbUnidade.Text = "";
+                TextCodigo.Clear();
+                TextNome.Clear();
+                cbUnidade.SelectedIndex = 1;
             }
             else
             {
                 MessageBox.Show("Código ja cadastrado no sistema !", Application.Current.MainWindow.Name, MessageBoxButton.OK, MessageBoxImage.Error);
-                TextCodigo.Text = "";
+                TextCodigo.Clear();
                 return;
             }
         }

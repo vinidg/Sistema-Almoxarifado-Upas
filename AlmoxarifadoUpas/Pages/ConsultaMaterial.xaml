@@ -7,19 +7,35 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="350" Loaded="UserControl_Loaded">
     <Grid Style="{StaticResource ContentRoot}">
-        <Grid>
-            <DockPanel>
-                <TextBlock DockPanel.Dock="Top" Text="Materiais" Style="{StaticResource Heading2}" Margin="0,0,0,0" />
-                <DataGrid Name="tabela" ItemsSource="{Binding}" AutoGenerateColumns="False" CanUserAddRows="false">
-                    <DataGrid.Columns>
-                        <mui:DataGridTextColumn Header="ID" Binding="{Binding id_material}" IsReadOnly="True" />
-                        <mui:DataGridTextColumn Header="Código" Binding="{Binding codigo}" IsReadOnly="True" />
-                        <mui:DataGridTextColumn Header="Material" Binding="{Binding nome}" IsReadOnly="True" />
-                        <mui:DataGridTextColumn Header="Unidade" Binding="{Binding unidade}" IsReadOnly="True" />
-                        <mui:DataGridTextColumn Header="Saldo" Binding="{Binding saldo}" IsReadOnly="True" />
-                    </DataGrid.Columns>
-                </DataGrid>
-            </DockPanel>
-        </Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <DockPanel>
+            <TextBlock DockPanel.Dock="Top" Text="Materiais" Style="{StaticResource Heading2}" Margin="0,0,0,0" />
+            <DataGrid Name="tabelaMateriais" ItemsSource="{Binding}" AutoGenerateColumns="False" CanUserAddRows="false">
+                <DataGrid.Columns>
+                    <mui:DataGridTextColumn Header="ID" Binding="{Binding id_material}" IsReadOnly="True" />
+                    <mui:DataGridTextColumn Header="Código" Binding="{Binding codigo}" IsReadOnly="True" />
+                    <mui:DataGridTextColumn Header="Material" Binding="{Binding nome}" IsReadOnly="True" />
+                    <mui:DataGridTextColumn Header="Unidade" Binding="{Binding unidade}" IsReadOnly="True" />
+                    <mui:DataGridTextColumn Header="Saldo" Binding="{Binding saldo}" IsReadOnly="True" />
+                    <mui:DataGridCheckBoxColumn Header="Desativado" Binding="{Binding desativado}" IsReadOnly="True" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </DockPanel>
+        <DockPanel Grid.Row="1">
+            <TextBlock DockPanel.Dock="Top" Text="Histórico de Movimentações" Style="{StaticResource Heading2}" Margin="0,0,0,0" />
+            <DataGrid Name="tabelaHistorico" ItemsSource="{Binding}" AutoGenerateColumns="False" CanUserAddRows="False">
+                <DataGrid.Columns>
+                    <mui:DataGridTextColumn Header="ID" Binding="{Binding id_movimento}" IsReadOnly="True" />
+                    <mui:DataGridTextColumn Header="Tipo" Binding="{Binding tipoMovimentacao}" IsReadOnly="True"/>
+                    <mui:DataGridTextColumn Header="Origem" Binding="{Binding origem}" IsReadOnly="True" />
+                    <mui:DataGridTextColumn Header="Destino" Binding="{Binding destino}" IsReadOnly="True"/>
+                    <mui:DataGridTextColumn Header="Quantidade" Binding="{Binding quantidade}" IsReadOnly="True" />
+                    <mui:DataGridTextColumn Header="Material" Binding="{Binding id_materialA}" IsReadOnly="True" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </DockPanel>
     </Grid>
 </UserControl>
