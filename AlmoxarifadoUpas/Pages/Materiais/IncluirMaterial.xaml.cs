@@ -8,6 +8,7 @@ using System.Windows.Input;
 using System.Text.RegularExpressions;
 using System.Linq;
 using AlmoxarifadoUpas.Context;
+using FirstFloor.ModernUI.Windows.Controls;
 
 namespace AlmoxarifadoUpas.Pages
 {
@@ -28,9 +29,9 @@ namespace AlmoxarifadoUpas.Pages
             if (materiais.VerificarSeCodigoExiste(TextCodigo.Text))
             {
                 MaterialA material = new MaterialA();
-                material.codigo = TextCodigo.Text;
-                material.nome = TextNome.Text;
-                material.unidade = cbUnidade.SelectedItem.ToString();
+                material.Codigo = TextCodigo.Text;
+                material.Nome = TextNome.Text;
+                material.Unidade = cbUnidade.SelectedItem.ToString();
                 material.desativado = false;
 
                 materiais.InserirMaterial(material);
@@ -40,7 +41,7 @@ namespace AlmoxarifadoUpas.Pages
             }
             else
             {
-                MessageBox.Show("Código ja cadastrado no sistema !", Application.Current.MainWindow.Name, MessageBoxButton.OK, MessageBoxImage.Error);
+                ModernDialog.ShowMessage("Código ja cadastrado no sistema !", Application.Current.MainWindow.Name, MessageBoxButton.OK);
                 TextCodigo.Clear();
                 return;
             }

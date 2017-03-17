@@ -1,4 +1,5 @@
 ﻿using AlmoxarifadoUpas.Context;
+using FirstFloor.ModernUI.Windows.Controls;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -45,17 +46,17 @@ namespace AlmoxarifadoUpas.Pages
             }
             catch (Exception)
             {
-                MessageBox.Show("Código inexistente !",Application.Current.MainWindow.Name,MessageBoxButton.OK,MessageBoxImage.Error);
-                AutoCompleteNome.Focus();
+                ModernDialog.ShowMessage("Código inexistente !",Application.Current.MainWindow.Name,MessageBoxButton.OK);
+                Keyboard.Focus(this.AutoCompleteNome);
                 return;
             }
 
             HistoricoMovimentacao hm = new HistoricoMovimentacao();
-            hm.id_materialA = id_material;
-            hm.origem = TextOrigem.Text;
-            hm.destino = TextDestino.Text;
-            hm.quantidade = Convert.ToInt32(TextMovimento.Text);
-            hm.tipoMovimentacao = TipoMovimentacao.Entrada.ToString();
+            hm.Id_materialA = id_material;
+            hm.Origem = TextOrigem.Text;
+            hm.Destino = TextDestino.Text;
+            hm.Quantidade = Convert.ToInt32(TextMovimento.Text);
+            hm.TipoMovimentacao = TipoMovimentacao.Entrada.ToString();
 
             materiais.EntradaDeMateriais(hm);
         }

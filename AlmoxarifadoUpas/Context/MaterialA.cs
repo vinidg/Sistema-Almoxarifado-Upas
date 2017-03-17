@@ -9,25 +9,57 @@
 
 namespace AlmoxarifadoUpas.Context
 {
+    using FirstFloor.ModernUI.Presentation;
     using System;
     using System.Collections.Generic;
-    
-    public partial class MaterialA
+    using System.ComponentModel;
+
+    public partial class MaterialA : NotifyPropertyChanged, IDataErrorInfo
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public MaterialA()
         {
             this.HistoricoMovimentacao = new HashSet<HistoricoMovimentacao>();
         }
-    
-        public int id_material { get; set; }
-        public string codigo { get; set; }
-        public string unidade { get; set; }
-        public int saldo { get; set; }
-        public string nome { get; set; }
+
+        private int id_material;
+        public int Id_material { get { return this.id_material; } set { if (this.id_material != value) { this.id_material = value; OnPropertyChanged("Id_material"); }; } }
+        private string codigo;
+        public string Codigo { get { return this.codigo; } set { if (this.codigo != value) { this.codigo = value; OnPropertyChanged("Codigo"); }; } }
+        private string nome;
+        public string Nome { get { return this.nome; } set { if (this.nome != value) { this.nome = value; OnPropertyChanged("Nome"); }; } }
+        private string unidade;
+        public string Unidade { get { return this.unidade; } set { if (this.unidade != value) { this.unidade = value; OnPropertyChanged("Unidade"); }; } }
+        private int saldo;
+        public int Saldo { get { return this.saldo; } set { if (this.saldo != value) { this.saldo = value; OnPropertyChanged("Saldo"); }; } }
         public bool desativado { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HistoricoMovimentacao> HistoricoMovimentacao { get; set; }
+
+        public string Error
+        {
+            get { return null; }
+        }
+
+        public string this[string columnName]
+        {
+            get
+            {
+                if (columnName == "Codigo")
+                {
+                    return string.IsNullOrEmpty(this.codigo) ? "Código requerido" : null;
+                }
+                if (columnName == "Nome")
+                {
+                    return string.IsNullOrEmpty(this.nome) ? "Nome requerido" : null;
+                }
+                if (columnName == "Unidade")
+                {
+                    return string.IsNullOrEmpty(this.unidade) ? "Unidade requerido" : null;
+                }
+                return null;
+            }
+        }
     }
 }

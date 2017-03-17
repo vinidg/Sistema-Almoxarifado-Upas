@@ -44,11 +44,11 @@ namespace AlmoxarifadoUpas.Pages
             }
 
             HistoricoMovimentacao hm = new HistoricoMovimentacao();
-            hm.id_materialA = id_material;
-            hm.origem = TextOrigem.Text;
-            hm.destino = TextDestino.Text;
-            hm.quantidade = Convert.ToInt32(TextMovimento.Text);
-            hm.tipoMovimentacao = TipoMovimentacao.Saida.ToString();
+            hm.Id_materialA = id_material;
+            hm.Origem = TextOrigem.Text;
+            hm.Destino = TextDestino.Text;
+            hm.Quantidade = Convert.ToInt32(TextMovimento.Text);
+            hm.TipoMovimentacao = TipoMovimentacao.Saida.ToString();
 
             materiais.SaidaDeMateriais(hm);
         }

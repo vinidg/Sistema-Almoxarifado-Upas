@@ -31,16 +31,15 @@ namespace AlmoxarifadoUpas.Pages.Materiais
 
         private void Editar_Click(object sender, RoutedEventArgs e)
         {         
-                row = (MaterialA)tabela.SelectedItems[0];
-                TextCodigo.Text = row.codigo;
-                TextNome.Text = row.nome;
-                cbUnidade.Text = row.unidade;
-            
+            row = (MaterialA)tabela.SelectedItems[0];
+            TextCodigo.Text = row.Codigo;
+            TextNome.Text = row.Nome;
+            cbUnidade.Text = row.Unidade;
         }
 
         private void Confirmar_Click(object sender, RoutedEventArgs e)
         {
-            materiais.EditarMaterial(row.id_material, TextCodigo.Text, TextNome.Text, cbUnidade.Text);
+            materiais.EditarMaterial(row.Id_material, TextCodigo.Text, TextNome.Text, cbUnidade.Text);
             tabela.DataContext = materiais.ListarMateriais();
 
             TextCodigo.Clear();

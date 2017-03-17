@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:mui="http://firstfloorsoftware.com/ModernUI"
              xmlns:app="clr-namespace:AlmoxarifadoUpas"
+             xmlns:appentrada="clr-namespace:AlmoxarifadoUpas.Context"
              xmlns:actb="clr-namespace:Aviad.WPF.Controls;assembly=Aviad.WPF.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="564">
@@ -86,20 +87,19 @@
                         </StackPanel.Resources>
                         <!-- create viewmodel -->
                         <StackPanel.DataContext>
-                            <app:MainWindow />
+                            <appentrada:MaterialA />
                         </StackPanel.DataContext>
-
                         <StackPanel>
                             <Label Content="Origem" Target="{Binding ElementName=TextOrigem}"/>
-                            <TextBox x:Name="TextOrigem" Width="150" />
+                            <TextBox x:Name="TextOrigem" Width="150" Text="{Binding Origem, Mode=TwoWay, ValidatesOnDataErrors=True}" />
                         </StackPanel>
                         <StackPanel>
                             <Label Content="Destino" Target="{Binding ElementName=TextDestino}"/>
-                            <TextBox x:Name="TextDestino" Width="150" />
+                            <TextBox x:Name="TextDestino" Width="150" Text="{Binding Destino, Mode=TwoWay, ValidatesOnDataErrors=True}" />
                         </StackPanel>
                         <StackPanel>
                             <Label Content="Quantidade movimentada" Target="{Binding ElementName=TextMovimento}"/>
-                            <TextBox x:Name="TextMovimento" Width="150" PreviewTextInput="validacaoNumero"/>
+                            <TextBox x:Name="TextMovimento" Width="150" PreviewTextInput="validacaoNumero" Text="{Binding Saldo, Mode=TwoWay, ValidatesOnDataErrors=True}" />
                         </StackPanel>
                         <StackPanel>
                             <Button Content="Confirmar" Margin="200,16,0,0" HorizontalAlignment="Left" Click="Confirmar_Click" />
