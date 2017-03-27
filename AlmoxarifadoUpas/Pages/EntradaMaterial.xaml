@@ -40,13 +40,13 @@
                                     <RowDefinition />
                                 </Grid.RowDefinitions>
                                 <TextBlock Text="Código:    "/>
-                                <TextBlock Grid.Column="1" Text="{Binding codigo}" />
+                                <TextBlock Grid.Column="1" Text="{Binding Codigo}" />
                                 <TextBlock Grid.Row="1" Text="Material:     " />
-                                <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding nome}"/>
+                                <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding Nome}"/>
                                 <TextBlock Grid.Row="2" Text="Unidade:  " />
-                                <TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding unidade}" />
+                                <TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding Unidade}" />
                                 <TextBlock Grid.Row="3" Text="Saldo:  " />
-                                <TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding saldo}" />
+                                <TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding Saldo}" />
                             </Grid>
                         </Border>
                     </DataTemplate>
@@ -62,7 +62,7 @@
                                 Width="250"
                                 ItemsSource="{Binding Source={StaticResource listaMaterial}, Path=materiais}"
                                 ItemTemplate="{StaticResource template}"
-                                Binding="{Binding codigo}"
+                                Binding="{Binding Codigo}"
                                 MaxCompletions="10" TextChanged="AutoCompleteNome_TextChanged" />
                     </Grid>
                 </StackPanel>

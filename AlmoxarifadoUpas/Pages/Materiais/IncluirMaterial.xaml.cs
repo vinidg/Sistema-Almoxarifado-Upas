@@ -32,7 +32,7 @@ namespace AlmoxarifadoUpas.Pages
                 material.Codigo = TextCodigo.Text;
                 material.Nome = TextNome.Text;
                 material.Unidade = cbUnidade.SelectedItem.ToString();
-                material.desativado = false;
+                material.Desativado = false;
 
                 materiais.InserirMaterial(material);
                 TextCodigo.Clear();

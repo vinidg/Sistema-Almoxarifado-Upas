@@ -7,17 +7,23 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300" Loaded="UserControl_Loaded">
     <Grid Style="{StaticResource ContentRoot}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="100" />
+        </Grid.RowDefinitions>
+        
         <Grid>
             <DockPanel>
                 <TextBlock DockPanel.Dock="Top" Text="Materiais" Style="{StaticResource Heading2}" Margin="0,0,0,0" />
-                <DataGrid Name="tabela" ItemsSource="{Binding}" AutoGenerateColumns="False" CanUserAddRows="false">
+                <DataGrid Name="tabelaRemover" ItemsSource="{Binding}" AutoGenerateColumns="False" CanUserAddRows="false">
                     <DataGrid.Columns>
-                        <mui:DataGridTextColumn Header="ID" Binding="{Binding id_material}" IsReadOnly="True" />
-                        <mui:DataGridTextColumn Header="Código" Binding="{Binding codigo}" IsReadOnly="True" />
-                        <mui:DataGridTextColumn Header="Material" Binding="{Binding nome}" IsReadOnly="True" />
-                        <mui:DataGridTextColumn Header="Unidade" Binding="{Binding unidade}" IsReadOnly="True" />
-                        <mui:DataGridTextColumn Header="Saldo" Binding="{Binding saldo}" IsReadOnly="True" />
-                        <mui:DataGridCheckBoxColumn Header="Desativado" Binding="{Binding desativado}" IsReadOnly="True" />
+                        <mui:DataGridTextColumn Header="ID" Binding="{Binding Id_material}" IsReadOnly="True" />
+                        <mui:DataGridTextColumn Header="Código" Binding="{Binding Codigo}" IsReadOnly="True" />
+                        <mui:DataGridTextColumn Header="Material" Binding="{Binding Nome}" IsReadOnly="True" />
+                        <mui:DataGridTextColumn Header="Unidade" Binding="{Binding Unidade}" IsReadOnly="True" />
+                        <mui:DataGridTextColumn Header="Saldo" Binding="{Binding Saldo}" IsReadOnly="True" />
+                        <mui:DataGridCheckBoxColumn Header="Desativado" Binding="{Binding Desativado}" IsReadOnly="True" />
                         <DataGridTemplateColumn Header="Remover">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
@@ -28,7 +34,31 @@
                     </DataGrid.Columns>
                 </DataGrid>
             </DockPanel>
-
         </Grid>
+
+        <DockPanel Grid.Row="1">
+            <Grid>
+                <DockPanel>
+                    <TextBlock DockPanel.Dock="Top" Text="Materiais Removidos" Style="{StaticResource Heading2}" Margin="0,0,0,0" />
+                    <DataGrid Name="tabelaRemovidos" ItemsSource="{Binding}" AutoGenerateColumns="False" CanUserAddRows="false">
+                        <DataGrid.Columns>
+                            <mui:DataGridTextColumn Header="ID" Binding="{Binding Id_material}" IsReadOnly="True" />
+                            <mui:DataGridTextColumn Header="Código" Binding="{Binding Codigo}" IsReadOnly="True" />
+                            <mui:DataGridTextColumn Header="Material" Binding="{Binding Nome}" IsReadOnly="True" />
+                            <mui:DataGridTextColumn Header="Unidade" Binding="{Binding Unidade}" IsReadOnly="True" />
+                            <mui:DataGridTextColumn Header="Saldo" Binding="{Binding Saldo}" IsReadOnly="True" />
+                            <mui:DataGridCheckBoxColumn Header="Desativado" Binding="{Binding Desativado}" IsReadOnly="True" />
+                            <DataGridTemplateColumn Header="Remover">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Content="Liberar" Click="Liberar_Click" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DockPanel>
+            </Grid>
+        </DockPanel>
     </Grid>
 </UserControl>

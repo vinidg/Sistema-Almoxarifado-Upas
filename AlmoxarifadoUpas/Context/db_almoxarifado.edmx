@@ -7,35 +7,35 @@
     <Schema Namespace="ALMOXARIFADOUPASModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="HistoricoMovimentacao">
           <Key>
-            <PropertyRef Name="id_movimento" />
+            <PropertyRef Name="Id_movimento" />
           </Key>
-          <Property Name="id_movimento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="origem" Type="varchar" MaxLength="50" />
-          <Property Name="destino" Type="varchar" MaxLength="50" />
-          <Property Name="quantidade" Type="int" />
-          <Property Name="id_materialA" Type="int" Nullable="false" />
-          <Property Name="tipoMovimentacao" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Id_movimento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Origem" Type="varchar" MaxLength="50" />
+          <Property Name="Destino" Type="varchar" MaxLength="50" />
+          <Property Name="Quantidade" Type="int" />
+          <Property Name="Id_materialA" Type="int" Nullable="false" />
+          <Property Name="TipoMovimentacao" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="MaterialA">
           <Key>
-            <PropertyRef Name="id_material" />
+            <PropertyRef Name="Id_material" />
           </Key>
-          <Property Name="id_material" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="codigo" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="unidade" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="saldo" Type="int" Nullable="false" />
-          <Property Name="nome" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="desativado" Type="bit" Nullable="false" />
+          <Property Name="Id_material" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Unidade" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Saldo" Type="int" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Desativado" Type="bit" Nullable="false" />
         </EntityType>
         <Association Name="FK__Historico__id_ma__1367E606">
           <End Role="MaterialA" Type="Self.MaterialA" Multiplicity="1" />
           <End Role="HistoricoMovimentacao" Type="Self.HistoricoMovimentacao" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MaterialA">
-              <PropertyRef Name="id_material" />
+              <PropertyRef Name="Id_material" />
             </Principal>
             <Dependent Role="HistoricoMovimentacao">
-              <PropertyRef Name="id_materialA" />
+              <PropertyRef Name="Id_materialA" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -51,50 +51,50 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ALMOXARIFADOUPASModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="HistoricoMovimentacao">
-          <Key>
-            <PropertyRef Name="id_movimento" />
-          </Key>
-          <Property Name="id_movimento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="origem" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="destino" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="quantidade" Type="Int32" />
-          <Property Name="id_materialA" Type="Int32" Nullable="false" />
-          <Property Name="tipoMovimentacao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="MaterialA" Relationship="Self.FK__Historico__id_ma__1367E606" FromRole="HistoricoMovimentacao" ToRole="MaterialA" />
-        </EntityType>
-        <EntityType Name="MaterialA">
-          <Key>
-            <PropertyRef Name="id_material" />
-          </Key>
-          <Property Name="id_material" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="unidade" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="saldo" Type="Int32" Nullable="false" />
-          <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="HistoricoMovimentacao" Relationship="Self.FK__Historico__id_ma__1367E606" FromRole="MaterialA" ToRole="HistoricoMovimentacao" />
-          <Property Name="desativado" Type="Boolean" Nullable="false" />
-        </EntityType>
-        <Association Name="FK__Historico__id_ma__1367E606">
-          <End Role="MaterialA" Type="Self.MaterialA" Multiplicity="1" />
-          <End Role="HistoricoMovimentacao" Type="Self.HistoricoMovimentacao" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MaterialA">
-              <PropertyRef Name="id_material" />
-            </Principal>
-            <Dependent Role="HistoricoMovimentacao">
-              <PropertyRef Name="id_materialA" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="HistoricoMovimentacao" EntityType="Self.HistoricoMovimentacao" />
-          <EntitySet Name="MaterialA" EntityType="Self.MaterialA" />
-          <AssociationSet Name="FK__Historico__id_ma__1367E606" Association="Self.FK__Historico__id_ma__1367E606">
+          <EntitySet Name="HistoricoMovimentacao" EntityType="ALMOXARIFADOUPASModel.HistoricoMovimentacao" />
+          <EntitySet Name="MaterialA" EntityType="ALMOXARIFADOUPASModel.MaterialA" />
+          <AssociationSet Name="FK__Historico__id_ma__1367E606" Association="ALMOXARIFADOUPASModel.FK__Historico__id_ma__1367E606">
             <End Role="MaterialA" EntitySet="MaterialA" />
             <End Role="HistoricoMovimentacao" EntitySet="HistoricoMovimentacao" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="HistoricoMovimentacao">
+          <Key>
+            <PropertyRef Name="Id_movimento" />
+          </Key>
+          <Property Name="Id_movimento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Origem" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Destino" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Quantidade" Type="Int32" />
+          <Property Name="Id_materialA" Type="Int32" Nullable="false" />
+          <Property Name="TipoMovimentacao" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MaterialA" Relationship="ALMOXARIFADOUPASModel.FK__Historico__id_ma__1367E606" FromRole="HistoricoMovimentacao" ToRole="MaterialA" />
+        </EntityType>
+        <EntityType Name="MaterialA">
+          <Key>
+            <PropertyRef Name="Id_material" />
+          </Key>
+          <Property Name="Id_material" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Unidade" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Saldo" Type="Int32" Nullable="false" />
+          <Property Name="Nome" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Desativado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="HistoricoMovimentacao" Relationship="ALMOXARIFADOUPASModel.FK__Historico__id_ma__1367E606" FromRole="MaterialA" ToRole="HistoricoMovimentacao" />
+        </EntityType>
+        <Association Name="FK__Historico__id_ma__1367E606">
+          <End Type="ALMOXARIFADOUPASModel.MaterialA" Role="MaterialA" Multiplicity="1" />
+          <End Type="ALMOXARIFADOUPASModel.HistoricoMovimentacao" Role="HistoricoMovimentacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaterialA">
+              <PropertyRef Name="Id_material" />
+            </Principal>
+            <Dependent Role="HistoricoMovimentacao">
+              <PropertyRef Name="Id_materialA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -104,24 +104,24 @@
           <EntitySetMapping Name="HistoricoMovimentacao">
             <EntityTypeMapping TypeName="ALMOXARIFADOUPASModel.HistoricoMovimentacao">
               <MappingFragment StoreEntitySet="HistoricoMovimentacao">
-                <ScalarProperty Name="id_movimento" ColumnName="id_movimento" />
-                <ScalarProperty Name="origem" ColumnName="origem" />
-                <ScalarProperty Name="destino" ColumnName="destino" />
-                <ScalarProperty Name="quantidade" ColumnName="quantidade" />
-                <ScalarProperty Name="id_materialA" ColumnName="id_materialA" />
-                <ScalarProperty Name="tipoMovimentacao" ColumnName="tipoMovimentacao" />
+                <ScalarProperty Name="TipoMovimentacao" ColumnName="TipoMovimentacao" />
+                <ScalarProperty Name="Id_materialA" ColumnName="Id_materialA" />
+                <ScalarProperty Name="Quantidade" ColumnName="Quantidade" />
+                <ScalarProperty Name="Destino" ColumnName="Destino" />
+                <ScalarProperty Name="Origem" ColumnName="Origem" />
+                <ScalarProperty Name="Id_movimento" ColumnName="Id_movimento" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="MaterialA">
             <EntityTypeMapping TypeName="ALMOXARIFADOUPASModel.MaterialA">
               <MappingFragment StoreEntitySet="MaterialA">
-                <ScalarProperty Name="desativado" ColumnName="desativado" />
-                <ScalarProperty Name="id_material" ColumnName="id_material" />
-                <ScalarProperty Name="codigo" ColumnName="codigo" />
-                <ScalarProperty Name="unidade" ColumnName="unidade" />
-                <ScalarProperty Name="saldo" ColumnName="saldo" />
-                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="Desativado" ColumnName="Desativado" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+                <ScalarProperty Name="Unidade" ColumnName="Unidade" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Id_material" ColumnName="Id_material" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

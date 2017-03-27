@@ -15,7 +15,6 @@ namespace AlmoxarifadoUpas
         public ConsultaMaterialEntradaSaida()
         {
             adicionarMaterialAutoComplete();
-            materiais = new List<MaterialA>();
         }
 
         public void adicionarMaterialAutoComplete()

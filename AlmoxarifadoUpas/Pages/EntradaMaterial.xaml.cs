@@ -65,7 +65,7 @@ namespace AlmoxarifadoUpas.Pages
         {
             if (AutoCompleteNome.Text.Length >= 1)
             {
-                AutoCompleteNome.ItemsSource = materiais.autoComplete(AutoCompleteNome.Text);
+                AutoCompleteNome.ItemsSource = materiais.AutoComplete(AutoCompleteNome.Text);
             }
         }
 

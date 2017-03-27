@@ -24,6 +24,6 @@ namespace AlmoxarifadoUpas
 
         int PegarIdMaterial(string codigo);
 
-        List<MaterialA> autoComplete(string AutoCompleteNome);
+        List<MaterialA> AutoComplete(string AutoCompleteNome);
     }
 }

@@ -16,17 +16,26 @@ namespace AlmoxarifadoUpas.Context
 
     public partial class HistoricoMovimentacao : NotifyPropertyChanged, IDataErrorInfo
     {
-        public int id_movimento { get; set; }
-        private string origem;
-        public string Origem { get { return this.origem; } set { if (this.origem != value) { this.origem = value; OnPropertyChanged("Origem"); }; } }
-        private string destino;
-        public string Destino { get { return this.destino; } set { if (this.destino != value) { this.destino = value; OnPropertyChanged("Destino"); }; } }
-        private int quantidade;
-        public int Quantidade { get { return this.quantidade; } set { if (this.quantidade != value) { this.quantidade = value; OnPropertyChanged("Quantidade"); }; } }
-        private int id_materialA;
-        public int Id_materialA { get { return this.id_materialA; } set { if (this.id_materialA != value) { this.id_materialA = value; OnPropertyChanged("Id_materialA"); }; } }
-        private string tipoMovimentacao;
-        public string TipoMovimentacao { get { return this.tipoMovimentacao; } set { if (this.tipoMovimentacao != value) { this.tipoMovimentacao = value; OnPropertyChanged("TipoMovimentacao"); }; } }
+         public int Id_movimento { get; set; }
+         private string origem;
+         public string Origem { get { return this.origem; } set { if (this.origem != value) { this.origem = value; OnPropertyChanged("Origem"); }; } }
+         private string destino;
+         public string Destino { get { return this.destino; } set { if (this.destino != value) { this.destino = value; OnPropertyChanged("Destino"); }; } }
+         private int quantidade;
+         public int Quantidade { get { return this.quantidade; } set { if (this.quantidade != value) { this.quantidade = value; OnPropertyChanged("Quantidade"); }; } }
+         private int id_materialA;
+         public int Id_materialA { get { return this.id_materialA; } set { if (this.id_materialA != value) { this.id_materialA = value; OnPropertyChanged("Id_materialA"); }; } }
+         private string tipoMovimentacao;
+         public string TipoMovimentacao { get { return this.tipoMovimentacao; } set { if (this.tipoMovimentacao != value) { this.tipoMovimentacao = value; OnPropertyChanged("TipoMovimentacao"); }; } }
+       
+        /*
+         public int Id_movimento { get; set; }
+         public string Origem { get; set; }
+         public string Destino { get; set; }
+         public int Quantidade { get; set; }
+         public int Id_materialA { get; set; }
+         public string TipoMovimentacao { get; set; }
+         */
 
         public virtual MaterialA MaterialA { get; set; }
 

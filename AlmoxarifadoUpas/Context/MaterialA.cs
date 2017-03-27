@@ -32,8 +32,16 @@ namespace AlmoxarifadoUpas.Context
         public string Unidade { get { return this.unidade; } set { if (this.unidade != value) { this.unidade = value; OnPropertyChanged("Unidade"); }; } }
         private int saldo;
         public int Saldo { get { return this.saldo; } set { if (this.saldo != value) { this.saldo = value; OnPropertyChanged("Saldo"); }; } }
-        public bool desativado { get; set; }
-    
+        public bool Desativado { get; set; }
+        /*
+        public int Id_material { get; set; }
+        public string Codigo { get; set; }
+        public string Nome { get; set; }
+        public string Unidade { get; set; }
+        public int Saldo { get; set; }
+        public bool Desativado { get; set; }
+        */
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HistoricoMovimentacao> HistoricoMovimentacao { get; set; }
 
@@ -56,7 +64,7 @@ namespace AlmoxarifadoUpas.Context
                 }
                 if (columnName == "Unidade")
                 {
-                    return string.IsNullOrEmpty(this.unidade) ? "Unidade requerido" : null;
+                    return string.IsNullOrEmpty(this.unidade) ? "Unidade requerida" : null;
                 }
                 return null;
             }
