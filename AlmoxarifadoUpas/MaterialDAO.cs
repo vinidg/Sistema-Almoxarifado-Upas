@@ -53,6 +53,18 @@ namespace AlmoxarifadoUpas
             return materiais;
         }
 
+        public List<MaterialA> ListarMateriaisDesativados()
+        {
+            List<MaterialA> materiais = new List<MaterialA>();
+            using (Entities db = new Entities())
+            {
+                materiais = (from MaterialA in db.MaterialA
+                             where MaterialA.Desativado == true
+                             select MaterialA).ToList();
+            }
+            return materiais;
+        }
+
         public List<HistoricoMovimentacao> ListarHistorico()
         {
             List<HistoricoMovimentacao> historico = new List<HistoricoMovimentacao>();
@@ -121,7 +133,12 @@ namespace AlmoxarifadoUpas
             }
             else
             {
-                Remover(material);
+                var resultado = ModernDialog.ShowMessage("Remover material ?", "Admin", MessageBoxButton.YesNo);
+
+                if (resultado == MessageBoxResult.Yes)
+                {
+                    Remover(material);
+                }
             }
 
         }
@@ -145,6 +162,38 @@ namespace AlmoxarifadoUpas
                 ModernDialog.ShowMessage("Material removido com sucesso !", Application.Current.MainWindow.Name, MessageBoxButton.OK);
 
             }
+        }
+
+        private void Liberar(MaterialA material)
+        {
+            using (Entities db = new Entities())
+            {
+
+                MaterialA m = db.MaterialA.First(x => x.Id_material == material.Id_material);
+                m.Desativado = false;
+
+                HistoricoMovimentacao hm = new HistoricoMovimentacao();
+                hm.Id_materialA = material.Id_material;
+                hm.Destino = "";
+                hm.Origem = "";
+                hm.Quantidade = 0;
+                hm.TipoMovimentacao = TipoMovimentacao.Liberar_material.ToString();
+
+                db.SaveChanges();
+                ModernDialog.ShowMessage("Material liberado com sucesso !", Application.Current.MainWindow.Name, MessageBoxButton.OK);
+
+            }
+        }
+
+        public void LiberarMaterial(MaterialA material)
+        {
+            var resultado = ModernDialog.ShowMessage("Liberar permanente ?", "Admin", MessageBoxButton.YesNo);
+
+            if (resultado == MessageBoxResult.Yes)
+            {
+                Liberar(material);
+            }
+
         }
 
         public void EditarMaterial(int id, string codigo, string nome, string unidade)
@@ -177,7 +226,6 @@ namespace AlmoxarifadoUpas
                     MaterialA material = db.MaterialA.First(m => m.Id_material == historico.Id_materialA);
                     material.Saldo += historico.Quantidade;
 
-                    db.MaterialA.Add(material);
                     db.HistoricoMovimentacao.Add(historico);
 
                     db.SaveChanges();
@@ -199,9 +247,8 @@ namespace AlmoxarifadoUpas
                 try
                 {
                     MaterialA material = db.MaterialA.First(m => m.Id_material == historico.Id_materialA);
-                    material.Saldo -= historico.Quantidade;
 
-                    db.MaterialA.Add(material);
+                    material.Saldo -= historico.Quantidade;
                     db.HistoricoMovimentacao.Add(historico);
 
                     db.SaveChanges();

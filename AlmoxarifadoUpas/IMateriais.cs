@@ -10,11 +10,15 @@ namespace AlmoxarifadoUpas
 
         List<MaterialA> ListarMateriais();
 
+        List<MaterialA> ListarMateriaisDesativados();
+
         List<HistoricoMovimentacao> ListarHistorico();
         
         bool VerificarSeCodigoExiste(string codigoMaterial);
 
         void RemoverMaterial(MaterialA material);
+
+        void LiberarMaterial(MaterialA material);
 
         void EditarMaterial(int id, string codigo, string nome, string unidade);
 

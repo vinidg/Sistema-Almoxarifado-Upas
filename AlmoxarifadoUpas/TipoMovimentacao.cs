@@ -8,6 +8,6 @@ namespace AlmoxarifadoUpas
 {
     public enum TipoMovimentacao
     {
-        Entrada, Saida, Inserir_material, Remover_material, alterar_material
+        Entrada, Saida, Inserir_material, Remover_material, alterar_material, Liberar_material
     }
 }
