@@ -8,10 +8,16 @@
              d:DesignHeight="300" d:DesignWidth="350" Loaded="UserControl_Loaded">
     <Grid Style="{StaticResource ContentRoot}">
         <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <DockPanel>
+            <StackPanel>
+                <Button Content="Excel" HorizontalAlignment="Right" Click="ToExcel_Click" />
+            </StackPanel>
+        </DockPanel>
+        <DockPanel Grid.Row="1">
             <TextBlock DockPanel.Dock="Top" Text="Materiais" Style="{StaticResource Heading2}" Margin="0,0,0,0" />
             <DataGrid Name="tabelaMateriais" ItemsSource="{Binding}" AutoGenerateColumns="False" CanUserAddRows="false">
                 <DataGrid.Columns>
@@ -24,7 +30,7 @@
                 </DataGrid.Columns>
             </DataGrid>
         </DockPanel>
-        <DockPanel Grid.Row="1">
+        <DockPanel Grid.Row="2">
             <TextBlock DockPanel.Dock="Top" Text="Histórico de Movimentações" Style="{StaticResource Heading2}" Margin="0,0,0,0" />
             <DataGrid Name="tabelaHistorico" ItemsSource="{Binding}" AutoGenerateColumns="False" CanUserAddRows="False">
                 <DataGrid.Columns>
